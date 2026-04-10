@@ -5,6 +5,7 @@ body {
     /* 這裡路徑要確認對準 images 資料夾 */
     background: url('./images/background.jpg') no-repeat center center fixed;
     background-color: #f0f0f0; 
+    background-attachment: scroll; /* 手機版改用 scroll 較穩定 */
     width: 100%;
     background-size: cover;
     font-family: '微軟正黑體', sans-serif;

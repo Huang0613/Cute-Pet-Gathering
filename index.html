@@ -38,19 +38,18 @@
         // 開啟遊戲的指令
     // 第 38 行到 第 44 行替換為：
     function openGame(gameUrl) {
-        console.log("正在嘗試開啟:", gameUrl); 
-        const overlay = document.getElementById('game-overlay');
-        const frame = document.getElementById('game-frame');
+       const overlay = document.getElementById('game-overlay');
+       const frame = document.getElementById('game-frame');
     
-    // 強制重置 iframe，解決加載緩存問題
-        frame.src = ""; 
-        setTimeout(() => {
-        // 直接使用傳入的 gameUrl
-           frame.src = gameUrl;
-           overlay.style.display = 'flex';
-        }, 10);
+    // 步驟 A: 先清空以重置手機瀏覽器的 iframe 狀態
+       frame.src = ""; 
+    // 步驟 B: 使用 setTimeout 確保瀏覽器完成重置
+       setTimeout(() => {
+        // 這裡直接傳入相對路徑，讓 Vercel 或 GitHub 自己尋找正確位置
+        frame.src = gameUrl; 
+        overlay.style.display = 'flex';
+        }, 50);
 }
-
         // 關閉遊戲的指令
         function closeGame() {
             const overlay = document.getElementById('game-overlay');
