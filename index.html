@@ -16,12 +16,12 @@
     </header>
 
     <div class="btn-container">
-    <div class="game-btn" onclick="openGame('./Animal-Merge-Game/index.html')">
+    <div class="game-btn" onclick="openGame('animal-merge-game/index.html')">
         <span class="icon">🐼</span>
         <span class="text">動物合成</span>
     </div>
 
-    <div class="game-btn" onclick="openGame('./Cute-Pet-Catch/index.html')">
+    <div class="game-btn" onclick="openGame('cute-pet-catch/index.html')">
         <span class="icon">🐶</span>
         <span class="text">接住動物</span>
     </div>
@@ -36,12 +36,20 @@
 
     <script>
         // 開啟遊戲的指令
-        function openGame(gameUrl) {
-            const overlay = document.getElementById('game-overlay');
-            const frame = document.getElementById('game-frame');
-            frame.src = gameUrl;          // 把遊戲網址放進去
-            overlay.style.display = 'flex'; // 顯示彈出層
-        }
+    // 第 38 行到 第 44 行替換為：
+    function openGame(gameUrl) {
+        console.log("正在嘗試開啟:", gameUrl); 
+        const overlay = document.getElementById('game-overlay');
+        const frame = document.getElementById('game-frame');
+    
+    // 強制重置 iframe，解決加載緩存問題
+        frame.src = ""; 
+        setTimeout(() => {
+        // 直接使用傳入的 gameUrl
+           frame.src = gameUrl;
+           overlay.style.display = 'flex';
+        }, 10);
+}
 
         // 關閉遊戲的指令
         function closeGame() {
